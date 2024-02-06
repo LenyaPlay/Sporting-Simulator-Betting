@@ -48,12 +48,12 @@ function MiniRouter() {
 
   if (state.stage == Stage.LOAD_SECOND_HALF) {
     return <LoadingPage>
-      Sport<br />Simulador Betting<br /> em futebol
+      O primeiro <br/>semestre está <br/>em andamento
     </LoadingPage>
   }
   if (state.stage == Stage.LOAD_RESULT) {
     return <LoadingPage>
-      Sport<br />Simulador Betting<br /> em futebol
+      O segundo <br/>tempo está <br/>em andamento
     </LoadingPage>
   }
   if (state.stage == Stage.MENU) {

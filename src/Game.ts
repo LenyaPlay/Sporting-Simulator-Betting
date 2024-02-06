@@ -218,6 +218,7 @@ export function setStage(stage : Stage) {
         }
         saveState(state);
         state.match.bet.type = Bet.NONE;
+        state.match.bet.money = Math.min(state.match.bet.money, getPoints());
         generateMatch2();
         generateCoefficients();
         saveState(state);
@@ -308,11 +309,11 @@ export function generateMatch1 () {
 export function generateCoefficients() {
     const state = loadState();
 
-    state.k1 = Math.round(getRandomInRange(1, 2) * 100) / 100;
-    state.k2 = Math.round(getRandomInRange(1, 2) * 100) / 100;
+    state.k1 = Math.round(getRandomInRange(1.15, 2) * 100) / 100;
+    state.k2 = Math.round(getRandomInRange(1.15, 2) * 100) / 100;
     state.k3 = Math.round(getRandomInRange(1.2, 2.5) * 100) / 100;
-    state.k4 = Math.round(((state.k1 + state.k3) / 2 - getRandomInRange(0.05, 0.2)) * 100) / 100;
-    state.k5 = Math.round(((state.k2 + state.k3) / 2 - getRandomInRange(0.05, 0.2)) * 100) / 100;
+    state.k4 = Math.round((Math.min(state.k1, state.k3) - getRandomInRange(0.05, 0.1)) * 100) / 100;
+    state.k5 = Math.round((Math.min(state.k2, state.k3) - getRandomInRange(0.05, 0.1)) * 100) / 100;
 
     saveState(state);
 }

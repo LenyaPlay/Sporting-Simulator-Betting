@@ -33,7 +33,7 @@ export default function MenuPage() {
           <ButtonV1 onClick={(e) => setStage(Stage.HELP)} caption='formação' />
         </div>
       </div>
-      <div className="text-center text-white font-black mb-10 text-lg font-['Gilroy'] uppercase">Sporting <br/>Simulador Betting <br/>em futebol</div>
+      <div className="text-center text-white font-black mb-10 text-lg font-['Gilroy'] uppercase">Sport <br/>Simulador Betting <br/>em futebol</div>
     </div>
   )
 }

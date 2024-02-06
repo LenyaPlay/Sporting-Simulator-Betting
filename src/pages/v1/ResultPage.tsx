@@ -34,7 +34,7 @@ function Match({ teams }: IPair) {
     const bg = income > 0 ? "bg-green-400" : income < 0 ? "bg-red-600" : "bg-gray-700";
     const postfix1 = loadState().income1 > 0 ? "+" : loadState().bet1.type != Bet.NONE ? '-' : '';
     const postfix2 = loadState().income2 > 0 ? "+" : loadState().bet2.type != Bet.NONE ? '-' : '';
-    const prefx = income > 0 ? "+" : "";
+    const prefix = income > 0 ? "+" : "";
 
     return <div className="bg-indigo-50 flex flex-col box-border mt-3 pb-7 px-4 pt-3 mx-2">
         <div className='flex divider-v justify-between'>
@@ -47,7 +47,7 @@ function Match({ teams }: IPair) {
         </p>
         <div className='w-full flex justify-center pt-2'>
             <div className={`w-[45%] py-2 rounded ${bg}`}>
-                <p className="text-center font-black text-white text-sm font-['Gilroy'] uppercase">{prefx}{income.toLocaleString("us-US")}</p>
+                <p className="text-center font-black text-white text-sm font-['Gilroy'] uppercase">{prefix}{income.toLocaleString("us-US")}</p>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@ function TeamInfo(props: ITeamInfo) {
     const winnerPosition = isReversed ? 'right-0 scale-x-[-1]' : 'left-0';
 
     return (
-        <div className={`flex flex-col gap-1 items-${isReversed ? 'end' : 'start'}`}>
+        <div className={`flex flex-col gap-1  items-${isReversed ? 'end' : 'start'}`}>
             <p className={`text-indigo-900 font-black text-sm font-['Gilroy'] uppercase ${isReversed ? 'text-right' : ''}`}>{team.name}</p>
             <div className={`flex flex-${flexDirection} relative items-center gap-3`}>
                 <img className='w-32 aspect-[107/74] object-cover' src={team.img} alt="" />

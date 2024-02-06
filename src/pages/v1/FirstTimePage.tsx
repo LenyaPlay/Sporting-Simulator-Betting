@@ -82,31 +82,35 @@ export const CoefficientItem = ({ text, coefficient, onClick, bet }: ICoefficien
 };
 
 function TeamInfo({ team, isReversed }: ITeamInfo) {
+
+    const items = isReversed ? "items-end" : "items-start";
+
     return (
-        <div className={`flex flex-col gap-1 items-${isReversed ? 'end' : 'start'}`}>
+        <div className={`flex flex-col gap-1 ` + items}>
             <p className={`text-indigo-900 font-black text-sm font-['Gilroy'] uppercase ${isReversed ? 'text-right' : ''}`}>{team.name}</p>
             <img className='w-32 aspect-[107/74] object-cover' src={team.img} alt="" />
-            <div className={`mt-3 flex gap-1 flex-col items-${isReversed ? 'end' : 'start'}`}>
-                <InfoItem isReversed={isReversed} img='coefficients' label="relação" value={isReversed ? loadState().k2 : loadState().k1} />
-                <InfoItem isReversed={isReversed} img='force' label="potência" value={team.force} />
-                <InfoItem isReversed={isReversed} img='home' label="home" value={team.home} />
-                <InfoItem isReversed={isReversed} img='trauma' label="trauma" value={team.trauma} />
-                <InfoItem isReversed={isReversed} img='style' label="estilo de jogo" value={team.style} />
-                <InfoItem isReversed={isReversed} img='trainer' label="força do treinador" value={team.trainer} />
-                <InfoItem isReversed={isReversed} img='fatigue' label="fadiga" value={team.fatigue} />
-                <InfoItem isReversed={isReversed} img='weather' label="tempo" value={team.weather} />
+            <div className={`mt-3 flex gap-1 flex-col ` + items}>
+                <InfoItem isReversed={isReversed} img='coefficients' label="relação:" value={isReversed ? loadState().k2 : loadState().k1} />
+                <InfoItem isReversed={isReversed} img='force' label="potência:" value={team.force} />
+                <InfoItem isReversed={isReversed} img='home' label="home:" value={team.home} />
+                <InfoItem isReversed={isReversed} img='trauma' label="trauma:" value={team.trauma} />
+                <InfoItem isReversed={isReversed} img='style' label="estilo de jogo:" value={team.style} />
+                <InfoItem isReversed={isReversed} img='trainer' label="força do treinador:" value={team.trainer} />
+                <InfoItem isReversed={isReversed} img='fatigue' label="fadiga:" value={team.fatigue} />
+                <InfoItem isReversed={isReversed} img='weather' label="tempo:" value={team.weather} />
             </div>
         </div>
     );
 }
 
 export function InfoItem({ label, value, img, isReversed }: IInfoItem) {
-    const flexDirection = isReversed ? 'row-reverse' : 'row';
+    const flexDirection = isReversed ? 'flex-row-reverse' : 'flex-row';
+    const textDirection = isReversed ? 'text-right' : 'text-left';
     
     return (
-        <div className={`flex gap-2 flex-${flexDirection} items-center`}>
+        <div className={`flex gap-2 ${flexDirection} items-center`}>
             <img className="h-5" src={require(`src/assets/images/v1/icons/${img}.png`)} />
-            <div className="text-indigo-900 text-xs font-semibold font-['Gilroy'] uppercase">{label} {value}</div>
+            <p className={`text-indigo-900 ${textDirection} text-xs font-semibold font-['Gilroy'] uppercase`}>{label} {value}</p>
         </div>
     );
 }
