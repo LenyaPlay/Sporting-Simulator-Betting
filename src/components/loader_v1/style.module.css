@@ -1,0 +1,15 @@
+.component > div > div {
+    animation: opacities 1s infinite ease-out;
+}
+
+@keyframes opacities {
+    0% {
+     opacity: 0.4;   
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
